@@ -75,7 +75,7 @@ body {
     position: relative; /* Posicionado em relação ao contêiner pai */
     width: 70%; /* Define largura do cartão */
     display: flex; /* Usa flexbox para organizar conteúdo */
-    flex-direction: column; /* Organiza conteúdo em coluna */
+    flex-direction: row-reverse;
     align-items: center; /* Alinha itens no centro */
     justify-content: center; /* Centraliza verticalmente os itens */
     background-color: rgba(0, 0, 0, 0.7); /* Fundo semitransparente para o cartão */
@@ -86,6 +86,8 @@ body {
 
 /* Estilo do conteúdo dentro do cartão */
 .b {
+    display: flex;
+    flex-direction: column;
     text-align: center; /* Centraliza texto */
 }
 
