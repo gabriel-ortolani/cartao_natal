@@ -1,0 +1,114 @@
+/* Resetando margens e bordas */
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* Fundo com imagem de natal */
+body {
+    background-image: url(assets/fundo.avif);
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Efeito de neve caindo */
+.snow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: transparent url('https://www.transparenttextures.com/patterns/snowflakes.png') repeat top center;
+    animation: snowflakes 10s linear infinite;
+}
+
+@keyframes snowflakes {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 0 100%;
+    }
+}
+
+/* Estilo do conteúdo principal */
+.a {
+    position: relative;
+    height: 95%;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    left: -20%;
+    bottom: 100px;
+}
+
+/* Ajustando a posição da imagem para cima */
+img {
+    max-height: 45%;
+    max-width: 30%;
+    position: relative;
+    left: 35%;
+    top: -120px; /* Aumentando o valor negativo para subir a imagem */
+}
+
+/* Caixa de texto com fundo semitransparente */
+.b {
+    position: relative;
+    height: 65%; /* Aumentando a altura para que o texto ocupe mais espaço */
+    width: 70%;
+    display: flex;
+    top: 180px;
+    flex-direction: column;
+    align-items: center;
+    left: 50%;
+    background-color: rgba(0, 0, 0, 0.475);
+    color: red;
+    padding: 40px; /* Adicionando mais espaço ao redor do texto */
+    text-align: center;
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Animação de fade-in para o conteúdo */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efeito de brilho nas palavras */
+.shine-text {
+    text-shadow: 0 0 5px #fff, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff7f00, 0 0 30px #ff7f00, 0 0 40px #ff7f00, 0 0 50px #ff7f00;
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #fff, 0 0 10px #ff0000, 0 0 15px #ff0000;
+    }
+    100% {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 50px #ff7f00;
+    }
+}
+
+/* Estilo das frases */
+p {
+    height: auto;
+    width: 50%; /* Aumentando a largura do texto */
+    position: relative;
+    left: 25%;
+    font-size: 1.2rem;
+    animation: fadeIn 1.5s ease-out;
+    animation-delay: 1s;
+}
