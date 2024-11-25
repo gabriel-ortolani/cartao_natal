@@ -1,98 +1,101 @@
-/* Resetando margens e bordas */
+/* Resetando margens e bordas para garantir consistência em todos os navegadores */
 * {
-    border: 0;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Inclui bordas no cálculo do tamanho total de elementos */
 }
 
-/* Fundo com imagem de natal */
+/* Define o fundo da página com uma imagem de Natal */
 body {
-    background-image: url(assets/fundo.avif);
-    background-size: cover;
-    overflow: hidden;
-    position: relative;
+    font-family: 'Mountains of Christmas', cursive; /* Fonte natalina para o corpo do site */
+    background-image: url(assets/fundo.avif); /* Define a imagem de fundo */
+    background-size: cover; /* Garante que a imagem cubra toda a área da tela */
+    background-position: center; /* Centraliza a imagem de fundo */
+    overflow: hidden; /* Remove barras de rolagem caso algo exceda a tela */
+    height: 100vh; /* Define altura da página como 100% da janela */
+    display: flex; /* Usa flexbox para centralizar conteúdo */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    color: #fff; /* Define cor do texto como branca */
 }
 
-/* Efeito de neve caindo */
+/* Efeito de neve, container para os flocos */
 .snow {
-    position: absolute;
+    position: absolute; /* Permite posicionar os flocos em relação à tela */
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: -1;
-    pointer-events: none;
-    background: transparent url('https://www.transparenttextures.com/patterns/snowflakes.png') repeat top center;
-    animation: snowflakes 10s linear infinite;
+    width: 100%; /* Ocupa toda a largura da tela */
+    height: 100%; /* Ocupa toda a altura da tela */
+    pointer-events: none; /* Garante que o efeito de neve não interfira em cliques */
+    z-index: -1; /* Coloca o efeito de neve atrás do conteúdo principal */
 }
 
-@keyframes snowflakes {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 0 100%;
-    }
+/* Estilo de cada floco de neve */
+.snowflake {
+    position: absolute; /* Permite movimentar cada floco individualmente */
+    top: -10px; /* Começa fora do topo da tela */
+    width: 10px; /* Define largura do floco */
+    height: 10px; /* Define altura do floco */
+    background: white; /* Cor branca para os flocos */
+    border-radius: 50%; /* Faz o floco ser redondo */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Adiciona um brilho leve ao floco */
+    animation: fall 10s linear infinite; /* Anima os flocos caindo */
+    opacity: 0.8; /* Dá transparência ao floco */
 }
 
-/* Estilo do conteúdo principal */
-.a {
-    position: relative;
-    height: 95%;
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    left: -20%;
-    bottom: 100px;
-}
+/* Variações nos flocos para criar um efeito aleatório */
+.snowflake:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; }
+.snowflake:nth-child(2) { left: 20%; animation-duration: 9s; animation-delay: 1s; }
+.snowflake:nth-child(3) { left: 30%; animation-duration: 7s; animation-delay: 2s; }
+.snowflake:nth-child(4) { left: 40%; animation-duration: 10s; animation-delay: 3s; }
+.snowflake:nth-child(5) { left: 50%; animation-duration: 8s; animation-delay: 4s; }
+.snowflake:nth-child(6) { left: 60%; animation-duration: 9s; animation-delay: 5s; }
+.snowflake:nth-child(7) { left: 70%; animation-duration: 7s; animation-delay: 6s; }
+.snowflake:nth-child(8) { left: 80%; animation-duration: 10s; animation-delay: 7s; }
+.snowflake:nth-child(9) { left: 90%; animation-duration: 8s; animation-delay: 8s; }
+.snowflake:nth-child(10) { left: 100%; animation-duration: 9s; animation-delay: 9s; }
 
-/* Ajustando a posição da imagem para cima */
-img {
-    max-height: 45%;
-    max-width: 30%;
-    position: relative;
-    left: 35%;
-    top: -120px; /* Aumentando o valor negativo para subir a imagem */
-}
-
-/* Caixa de texto com fundo semitransparente */
-.b {
-    position: relative;
-    height: 65%; /* Aumentando a altura para que o texto ocupe mais espaço */
-    width: 70%;
-    display: flex;
-    top: 180px;
-    flex-direction: column;
-    align-items: center;
-    left: 50%;
-    background-color: rgba(0, 0, 0, 0.475);
-    color: red;
-    padding: 40px; /* Adicionando mais espaço ao redor do texto */
-    text-align: center;
-    animation: fadeIn 1.5s ease-out;
-}
-
-/* Animação de fade-in para o conteúdo */
-@keyframes fadeIn {
+/* Animação dos flocos de neve caindo */
+@keyframes fall {
     0% {
-        opacity: 0;
-        transform: translateY(30px);
+        top: -10px; /* Começa fora da tela */
+        opacity: 0.8; /* Floco visível */
+        transform: translateX(0px); /* Sem movimento lateral */
     }
+    50% { opacity: 0.6; } /* Diminui a opacidade ao longo da queda */
     100% {
-        opacity: 1;
-        transform: translateY(0);
+        top: 100vh; /* Floco sai pela parte inferior da tela */
+        opacity: 0; /* Fica invisível no final */
+        transform: translateX(20px); /* Move o floco lateralmente */
     }
 }
 
-/* Efeito de brilho nas palavras */
+/* Estilo do cartão */
+.a {
+    position: relative; /* Posicionado em relação ao contêiner pai */
+    width: 70%; /* Define largura do cartão */
+    display: flex; /* Usa flexbox para organizar conteúdo */
+    flex-direction: column; /* Organiza conteúdo em coluna */
+    align-items: center; /* Alinha itens no centro */
+    justify-content: center; /* Centraliza verticalmente os itens */
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo semitransparente para o cartão */
+    padding: 40px; /* Espaçamento interno no cartão */
+    border-radius: 10px; /* Bordas arredondadas no cartão */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Adiciona uma sombra leve */
+}
+
+/* Estilo do conteúdo dentro do cartão */
+.b {
+    text-align: center; /* Centraliza texto */
+}
+
+/* Texto principal com efeito de brilho */
 .shine-text {
     text-shadow: 0 0 5px #fff, 0 0 10px #ff0000, 0 0 15px #ff0000, 0 0 20px #ff7f00, 0 0 30px #ff7f00, 0 0 40px #ff7f00, 0 0 50px #ff7f00;
-    animation: glow 1.5s ease-in-out infinite alternate;
+    animation: glow 1.5s ease-in-out infinite alternate; /* Efeito de pulsar no brilho */
 }
 
+/* Animação do brilho no texto principal */
 @keyframes glow {
     0% {
         text-shadow: 0 0 5px #fff, 0 0 10px #ff0000, 0 0 15px #ff0000;
@@ -102,13 +105,18 @@ img {
     }
 }
 
-/* Estilo das frases */
+/* Estilo do texto dos parágrafos */
 p {
-    height: auto;
-    width: 50%; /* Aumentando a largura do texto */
-    position: relative;
-    left: 25%;
-    font-size: 1.2rem;
-    animation: fadeIn 1.5s ease-out;
-    animation-delay: 1s;
+    font-family: 'Roboto', sans-serif; /* Fonte mais legível para parágrafos */
+    font-size: 1.2rem; /* Tamanho do texto */
+    line-height: 1.5; /* Espaçamento entre linhas */
+    color: #fff; /* Cor do texto */
+    margin-top: 20px; /* Espaçamento superior entre parágrafos */
+}
+
+/* Estilo da imagem no cartão */
+img {
+    max-width: 50%; /* Limita a largura da imagem */
+    height: auto; /* Preserva proporção da imagem */
+    margin-top: 20px; /* Adiciona espaçamento superior */
 }
