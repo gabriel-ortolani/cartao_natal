@@ -121,4 +121,17 @@ img {
     max-width: 50%; /* Limita a largura da imagem */
     height: auto; /* Preserva proporção da imagem */
     margin-top: 20px; /* Adiciona espaçamento superior */
+    animation: shake 2s ease infinite;
+}
+
+@keyframes shake {
+   0%{
+    transform: scale(1);
+   }
+   50%{
+    transform: scale(1.1);
+   }
+   100%{
+    transform: scale(1);
+   }
 }
